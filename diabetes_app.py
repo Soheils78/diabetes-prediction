@@ -23,7 +23,7 @@ model = LogisticRegression(random_state=42)
 model.fit(X, y)
 
 # Streamlit app
-st.title("Diabetes Prediction App")
+st.title("Diabetes Prediction Apps")
 st.write("This app predicts the likelihood of diabetes based on user inputs.")
 
 # User input fields
