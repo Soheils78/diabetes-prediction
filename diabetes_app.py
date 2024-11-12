@@ -24,7 +24,7 @@ model.fit(X, y)
 
 # Streamlit app
 st.title("Diabetes Prediction App")
-st.write("Implemented by Soheil Salemi")
+st.write("Implemented by **Soheil Salemi**")
 st.write("This app predicts the likelihood of diabetes based on user inputs.")
 
 
