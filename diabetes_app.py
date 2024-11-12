@@ -24,8 +24,9 @@ model.fit(X, y)
 
 # Streamlit app
 st.title("Diabetes Prediction App")
-st.write("This app predicts the likelihood of diabetes based on user inputs.")
 st.write("Implemented by Soheil Salemi")
+st.write("This app predicts the likelihood of diabetes based on user inputs.")
+
 
 # Add a description
 st.markdown(
@@ -36,6 +37,8 @@ st.markdown(
     - The result will be displayed with a green background for **unlikely** and a red background for **likely**.
     """
 )
+
+st.write(".....................................")
 
 # User input fields
 glucose = st.number_input("Glucose Level", min_value=0.0, max_value=300.0, value=120.0)
