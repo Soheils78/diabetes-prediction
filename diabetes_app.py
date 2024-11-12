@@ -37,26 +37,32 @@ age = st.number_input("Age", min_value=0, max_value=120, value=30)
 
 # Predict button
 if st.button("Predict"):
-    # Preprocess the user input
-    user_data = np.array([[glucose, blood_pressure, skin_thickness, insulin, bmi, age]])
-    user_data_scaled = scaler.transform(user_data)
+    try:
+        # Preprocess the user input
+        user_data = np.array([[glucose, blood_pressure, skin_thickness, insulin, bmi, age]])
+        user_data_scaled = scaler.transform(user_data)
 
-    # Make the prediction
-    prediction = model.predict(user_data_scaled)
-    probability = model.predict_proba(user_data_scaled)[0][1]
+        # Make the prediction
+        prediction = model.predict(user_data_scaled)
+        probability = model.predict_proba(user_data_scaled)[0][1]
 
-    # Display the prediction with different background colors
-if prediction[0] == 1:
-    st.markdown(
-        f"<div style='padding: 15px; color: white; background-color: red; text-align: center; border-radius: 10px;'>"
-        f"The model predicts that the person is <strong>likely</strong> to have diabetes with a probability of {probability:.2f}."
-        f"</div>",
-        unsafe_allow_html=True,
-    )
-else:
-    st.markdown(
-        f"<div style='padding: 15px; color: white; background-color: green; text-align: center; border-radius: 10px;'>"
-        f"The model predicts that the person is <strong>unlikely</strong> to have diabetes with a probability of {1 - probability:.2f}."
-        f"</div>",
-        unsafe_allow_html=True,
-    )
+        # Display the prediction with different background colors
+        if len(prediction) > 0 and prediction[0] == 1:
+            st.markdown(
+                f"<div style='padding: 15px; color: white; background-color: red; text-align: center; border-radius: 10px;'>"
+                f"The model predicts that the person is <strong>likely</strong> to have diabetes with a probability of {probability:.2f}."
+                f"</div>",
+                unsafe_allow_html=True,
+            )
+        elif len(prediction) > 0 and prediction[0] == 0:
+            st.markdown(
+                f"<div style='padding: 15px; color: white; background-color: green; text-align: center; border-radius: 10px;'>"
+                f"The model predicts that the person is <strong>unlikely</strong> to have diabetes with a probability of {1 - probability:.2f}."
+                f"</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.error("Unable to make a prediction. Please check the input values.")
+
+    except Exception as e:
+        st.error(f"An error occurred during prediction: {str(e)}")
