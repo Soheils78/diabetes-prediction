@@ -45,8 +45,18 @@ if st.button("Predict"):
     prediction = model.predict(user_data_scaled)
     probability = model.predict_proba(user_data_scaled)[0][1]
 
-    # Display the prediction
-    if prediction[0] == 1:
-        st.success(f"The model predicts that the person is likely to have diabetes with a probability of {probability:.2f}.")
-    else:
-        st.success(f"The model predicts that the person is unlikely to have diabetes with a probability of {1 - probability:.2f}.")
+    # Display the prediction with different background colors
+if prediction[0] == 1:
+    st.markdown(
+        f"<div style='padding: 15px; color: white; background-color: red; text-align: center; border-radius: 10px;'>"
+        f"The model predicts that the person is <strong>likely</strong> to have diabetes with a probability of {probability:.2f}."
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+else:
+    st.markdown(
+        f"<div style='padding: 15px; color: white; background-color: green; text-align: center; border-radius: 10px;'>"
+        f"The model predicts that the person is <strong>unlikely</strong> to have diabetes with a probability of {1 - probability:.2f}."
+        f"</div>",
+        unsafe_allow_html=True,
+    )
