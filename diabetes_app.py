@@ -8,14 +8,14 @@ from sklearn.linear_model import LogisticRegression
 data = pd.read_csv('diabetes.csv')
 
 # Replace zeros with NaN for specific columns
-data[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']] = data[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'Age']].replace(0, np.nan)
+data[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']] = data[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']].replace(0, np.nan)
 
 # Fill NaN values with the mean of each column
 data.fillna(data.mean(), inplace=True)
 
 # Standardize the features
 scaler = StandardScaler()
-X = scaler.fit_transform(data[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'Age']])
+X = scaler.fit_transform(data[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']])
 y = data['Outcome']
 
 # Train the Logistic Regression model with an 80-20 split
@@ -34,12 +34,12 @@ blood_pressure = st.number_input("Blood Pressure (Diastolic blood pressure (mm H
 skin_thickness = st.number_input("Skin Thickness (Triceps skin fold thickness (mm))", min_value=0.0, max_value=100.0, value=20.0)
 insulin = st.number_input("Insulin Level (2-Hour serum insulin (mu U/ml))", min_value=0.0, max_value=900.0, value=80.0)
 bmi = st.number_input("BMI (Body mass index (weight in kg/(height in m)^2))", min_value=0.0, max_value=100.0, value=25.0)
-age = st.number_input("Age", min_value=0, max_value=100, value=25)
+# age = st.number_input("Age", min_value=0, max_value=100, value=25)
 
 # Predict button
 if st.button("Predict"):
     # Preprocess the user input
-    user_data = np.array([[glucose, blood_pressure, skin_thickness, insulin, bmi, age]])
+    user_data = np.array([[glucose, blood_pressure, skin_thickness, insulin, bmi]])
     user_data_scaled = scaler.transform(user_data)
 
     # Make the prediction
