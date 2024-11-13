@@ -96,7 +96,7 @@ A Logistic Regression model was trained on the dataset to predict the likelihood
  ### 4. Data Split Experiment
 
  To improve model performance, different data splits were tested:
-	•	When the data was split into **80% training ** and **20% testing**, the Logistic Regression model’s accuracy increased to **77.27%.**
+	•	When the data was split into **80% training** and **20% testing**, the Logistic Regression model’s accuracy increased to **77.27%.**
 
  ### 5. Cross-Validation
  To ensure the model’s robustness, 5-fold cross-validation was performed:
