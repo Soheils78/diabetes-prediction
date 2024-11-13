@@ -64,9 +64,9 @@ Just  need to click to https://diabetes-prediction-8iwbxyaae6rueawreskvno.stream
  The dataset contained some missing or zero values in key features such as **Glucose, Blood Pressure, Skin Thickness, Insulin**, and **BMI**. 
  To handle these issues:
 
- 	•	Zero values in these features were replaced with NaN (Not a Number).
-	•	Missing values were filled with the mean of each column.
-	•	Features were standardized using StandardScaler to ensure the data has a mean of 0 and a standard deviation of 1.
+•	Zero values in these features were replaced with NaN (Not a Number).
+•	Missing values were filled with the mean of each column.
+•	Features were standardized using StandardScaler to ensure the data has a mean of 0 and a standard deviation of 1.
 
 ### 2. Logistic Regression Model
 
@@ -105,9 +105,9 @@ A Logistic Regression model was trained on the dataset to predict the likelihood
 
  ### Summary of Findings
 
- 	•	The best performing model was the Logistic Regression with an 80-20 split.
-	•	Cross-validation confirmed the model’s reliability with a mean accuracy of 76.95%.
-	•	The model was implemented in a Streamlit app for easy user interaction and diabetes prediction based on user inputs.
+•	The best performing model was the Logistic Regression with an 80-20 split.
+•	Cross-validation confirmed the model’s reliability with a mean accuracy of 76.95%.
+•	The model was implemented in a Streamlit app for easy user interaction and diabetes prediction based on user inputs.
 
 
  ## Author
